@@ -327,7 +327,6 @@ void sci_xmit(char a,HOST host)
     case TOUCHPAD:
         while (SciaRegs.SCIFFTX.bit.TXFFST != 0) {}
         SciaRegs.SCITXBUF=a;
-        break;
     case PC:
         while (ScibRegs.SCIFFTX.bit.TXFFST != 0) {}
         ScibRegs.SCITXBUF=a;
