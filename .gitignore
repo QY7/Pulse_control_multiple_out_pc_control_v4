@@ -1,4 +1,5 @@
-
+FLASH
+RAM
 *.map
 *.out
 *.xml
