@@ -130,11 +130,18 @@ void main(void)
     AdcRegs.INTSEL1N2.bit.INT1CONT  = 0;    // Disable ADCINT1 Continuous mode
     AdcRegs.INTSEL1N2.bit.INT1SEL   = 0;    // setup EOC0 to trigger ADCINT1 to fire
     AdcRegs.ADCSOC0CTL.bit.CHSEL    = 1;    // set SOC0 channel select to ADCINA4
-    AdcRegs.ADCSOC0CTL.bit.TRIGSEL  = 0;    // set SOC0 start trigger on EPWM1A, due to round-robin SOC0 converts first then SOC1
+    AdcRegs.ADCSOC0CTL.bit.TRIGSEL  = 5;    // set SOC0 start trigger on EPWM1A, due to round-robin SOC0 converts first then SOC1
     AdcRegs.ADCSOC0CTL.bit.ACQPS    = 6;    // set SOC0 S/H Window to 7 ADC Clock Cycles, (6 ACQPS plus 1)
     EDIS;
     DELAY_US(1000000);
 
+    // Assumes ePWM1 clock is already enabled in InitSysCtrl();
+    EPwm1Regs.ETSEL.bit.SOCAEN   = 1;        // Enable SOC on A group
+    EPwm1Regs.ETSEL.bit.SOCASEL  = 4;        // Select SOC from CMPA on upcount
+    EPwm1Regs.ETPS.bit.SOCAPRD   = 1;        // Generate pulse on 1st event
+    EPwm1Regs.CMPA.half.CMPA     = 0x0080;   // Set compare A value
+    EPwm1Regs.TBPRD              = 0xFFFF;   // Set period for ePWM1
+    EPwm1Regs.TBCTL.bit.CTRMODE  = 0;        // count up and start
     initScreenDate();
     state = OFF;
     add_data_channel();

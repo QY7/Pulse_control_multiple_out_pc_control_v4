@@ -85,9 +85,9 @@ __interrupt void cpu_timer0_isr(void)
             inner_cnt = 0;
         }
         //Software trigger ADC
-        AdcRegs.ADCSOCFRC1.all = 0x01;
-        AdcRegs.ADCSOCFRC1.all = 0x02;
-        data_cnt = 0;
+//        AdcRegs.ADCSOCFRC1.all = 0x01;
+//        AdcRegs.ADCSOCFRC1.all = 0x02;
+//        data_cnt = 0;
     }
     if(state == OFF){
 //        stop_cmd_flag = 0;
