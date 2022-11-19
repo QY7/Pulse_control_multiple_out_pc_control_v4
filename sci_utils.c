@@ -352,7 +352,7 @@ void sci_xmit_2byte(unsigned int a,HOST host)
 
 void sci_msg(char val[],unsigned int length,HOST host){
     unsigned int i = 0;
-    while (SciaRegs.SCIFFTX.bit.TXFFST != 0) {}
+//    while (SciaRegs.SCIFFTX.bit.TXFFST != 0) {}
     for(i = 0 ; i < length;i++){
         sci_xmit(val[i],host);
     }
