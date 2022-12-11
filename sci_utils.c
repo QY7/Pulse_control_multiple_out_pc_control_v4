@@ -18,11 +18,13 @@
 #define startWith( _message_,_string_)  (!strncmp((_message_),_string_, sizeof(_string_)-1) )
 
 #define SYS_CLK 90e6
-#define SCI_DIV 4
+#define SCI_DIV 1
 #define SCI_CLK SYS_CLK/SCI_DIV
 #define BAUD_RATE 115200
-#define SCI_REG SCI_CLK/(8*BAUD_RATE)-1
+#define BAUD_RATE1 256000
 
+#define SCI_REG SCI_CLK/(8*BAUD_RATE)-1
+#define SCI_REG1 SCI_CLK/(8*BAUD_RATE1)-1
 #define MAX_FREQUENCY 150000
 #define MIN_FREQUENCY 1
 
@@ -309,7 +311,7 @@ void scib_echoback_init()
    ScibRegs.SCICTL2.bit.TXINTENA =0;
    ScibRegs.SCICTL2.bit.RXBKINTENA =1;
    ScibRegs.SCIHBAUD = 0x0000;
-   ScibRegs.SCILBAUD = SCI_REG;
+   ScibRegs.SCILBAUD = SCI_REG1;
    ScibRegs.SCICCR.bit.LOOPBKENA =0; // Enable loop back
    ScibRegs.SCIFFTX.all=0xC002;
    ScibRegs.SCIFFRX.all=0x0021;

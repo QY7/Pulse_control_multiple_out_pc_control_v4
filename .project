@@ -81,11 +81,6 @@
 			<locationURI>INSTALLROOT_F2806x_V150/F2806x_common/source/F2806x_Sci.c</locationURI>
 		</link>
 		<link>
-			<name>F2806x_SysCtrl.c</name>
-			<type>1</type>
-			<locationURI>INSTALLROOT_F2806x_V150/F2806x_common/source/F2806x_SysCtrl.c</locationURI>
-		</link>
-		<link>
 			<name>F2806x_usDelay.asm</name>
 			<type>1</type>
 			<locationURI>INSTALLROOT_F2806x_V150/F2806x_common/source/F2806x_usDelay.asm</locationURI>
